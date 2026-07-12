@@ -240,4 +240,4 @@ Possible future extensions include:
 
 ## Author
 
-Hongyan Li
+CharmingVanilla
