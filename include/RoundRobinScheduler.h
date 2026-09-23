@@ -7,13 +7,14 @@
 #pragma once
 #include <vector> //create multiple UE objects
 #include "UE.h"
+#include "scheduler.h"
 
-class RoundRobinScheduler {
+class RoundRobinScheduler : public Scheduler {
     public:
     RoundRobinScheduler();
 
-    UE& selectUE(std::vector<UE>& users); //modify the original data not copy
+    UE& selectUE(std::vector<UE>& users) override; //modify the original data not copy
 
     private:
-    int currentIndex; // index of the last scheduled UE
+    int currentIndex; // index of the next scheduled UE
 };

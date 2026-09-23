@@ -5,6 +5,8 @@
 #include "RadioModel.h"
 #include "ProportionalFairScheduler.h"
 #include <string>
+#include "scheduler.h"
+#include "Simulation.h"
 
 
 double calculateJainFairness(const std::vector<UE>& users) {
@@ -74,6 +76,13 @@ void printResults(
         << "\n";
 }
 
+
+
+
+
+
+
+/*move to runSimulation function
 
 std::vector<UE> runRoundRobinSimulation(
     int numberOfTTIs,
@@ -183,22 +192,31 @@ std::vector<UE> runProportionalFairSimulation(
 }
 
 
+*/ 
+
+
+
 int main() {
     const int numberOfTTIs = 1000;
     const int allocatedRBs = 10;
 
+    RoundRobinScheduler rr;
+    ProportionalFairScheduler pf;
     RadioModel::setSeed(42);
     std::vector<UE> roundRobinUsers =
-        runRoundRobinSimulation(
+        runSimulation(
             numberOfTTIs,
-            allocatedRBs
+            allocatedRBs,
+            rr
         );
 
-    RadioModel::setSeed(42);
+    RadioModel::setSeed(42); //make sure same input
     std::vector<UE> proportionalFairUsers =
-        runProportionalFairSimulation(
+        runSimulation(
             numberOfTTIs,
-            allocatedRBs
+            allocatedRBs,
+            pf
+
         );
 
     printResults(

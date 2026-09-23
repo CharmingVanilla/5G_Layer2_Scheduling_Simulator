@@ -18,3 +18,13 @@ public:
     void updateAverageThroughput(double currentThroughput);
 };
 
+
+/*
+public:
+    int getCqi() const { return cqi; }
+
+    void setCqi(int newCqi) {
+        cqi = std::clamp(newCqi, 1, 15);
+    }
+
+*/

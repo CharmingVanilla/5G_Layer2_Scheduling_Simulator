@@ -1,5 +1,6 @@
 #include "UE.h"
 UE::UE(int id, int cqi)
+//memeber initialization list
     :id(id),
     cqi(cqi),
     totalThroughput(0.0),
@@ -21,12 +22,14 @@ void UE::recordTransmission(double throughput, bool success){
 
 
 // const means read the data but not modify it
+//read the statistics and do calculations
 double UE::calculateBler() const{
     if(transmissionCount == 0){
         return 0.0;
     }
 
     return static_cast<double>(failedTransmissionCount)/ transmissionCount;
+    //transfer failedTransmission into double
 }
 
 void UE::updateAverageThroughput(double currentThroughput){
